@@ -7,6 +7,7 @@ Este repositório demonstra como executar diferentes tipos de **testes de perfor
 ---
 
 ## 📂 Estrutura do Projeto
+
 k6_digimon_testes/
 ├── 1_smoke_test/ # Teste de fumaça
 ├── 2_load_test/ # Teste de carga básica
