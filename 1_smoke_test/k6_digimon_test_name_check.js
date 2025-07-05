@@ -1,6 +1,8 @@
 import http from 'k6/http';
 import { check, sleep } from 'k6';
 import { SharedArray } from 'k6/data';
+import { textSummary } from 'https://jslib.k6.io/k6-summary/0.0.1/index.js';
+import { htmlReport } from 'https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js';
 
 // Carrega os nomes dos Digimons de um arquivo JSON
 const digimons = new SharedArray('Digimon Names', function () {
@@ -26,3 +28,11 @@ export default function () {
 
     sleep(1);
 }
+
+export function handleSummary(data) {
+    return {
+        'summary.html': htmlReport(data),
+        stdout: textSummary(data, { indent: '→', enableColors: true }),
+    };
+}
+
