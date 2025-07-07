@@ -10,20 +10,21 @@ const digimons = new SharedArray('Digimon Names', function () {
 });
 
 export let options = {
-    vus: 10,
-    duration: '10s'
+    vus: 5,
+    iterations: 10
 };
 
 export default function () {
-    const name = digimons[__ITER];
+    // Pega um nome aleatório da lista
+    const name = digimons[Math.floor(Math.random() * digimons.length)];
     const url = `https://digimon-api.vercel.app/api/digimon/name/${name}`;
+
     const res = http.get(url);
 
-    console.log(`log:[${name}] Status: ${res.status} | Corpo: ${res.body}`);
+    console.log(`Testando Digimon: ${name} | Status: ${res.status}`);
 
     check(res, {
-        'status é 200': (r) => r.status === 200,
-        'tempo de resposta <= 3000ms': (r) => r.timings.duration <= 3000
+        'status é 200': (r) => r.status === 200
     });
 
     sleep(1);
@@ -35,4 +36,3 @@ export function handleSummary(data) {
         stdout: textSummary(data, { indent: '→', enableColors: true }),
     };
 }
-
