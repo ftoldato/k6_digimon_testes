@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Step 1 - Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Step 2 - Exemplo de workflow manual
         uses: grafana/k6-action@v0.2.0
@@ -22,7 +22,7 @@ jobs:
           mv index.html evidencias_teste/
 
       - name: Step 4 - Upload performance test report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with: 
           name: relatorio-de-testes-de-performance
           path: evidencias_teste/index.html
