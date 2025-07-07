@@ -11,7 +11,7 @@ const digimons = new SharedArray('Digimon Names', function () {
 
 export let options = {
     vus: 5,
-    iterations: 10
+    duration: '10s'
 };
 
 export default function () {
