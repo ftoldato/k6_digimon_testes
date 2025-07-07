@@ -1,5 +1,5 @@
 name: Exemplo de workflow manual
-on: [workflow_dispatch]  # permite rodar manualmente
+on: [workflow_dispatch]
 permissions:
   contents: write
 jobs:
@@ -10,19 +10,26 @@ jobs:
       - name: Step 1 - Checkout code
         uses: actions/checkout@v4
 
-      - name: Step 2 - Exemplo de workflow manual
+      - name: Step 2 - Executar teste com k6
         uses: grafana/k6-action@v0.2.0
         with: 
           filename: 1_smoke_test/smoke2.js
 
-      - name: Step 3 - Prepare scripts folder and move report
+      - name: Step 3 - Preparar pasta de evidências e mover relatório
         run: |
-          ls -l
-          mkdir -p 1_smoke_test
+          mkdir -p evidencias_test
           mv index.html evidencias_test/
 
-      - name: Step 4 - Upload performance test report
+      - name: Step 4 - Upload de artefato para download
         uses: actions/upload-artifact@v4
         with: 
           name: relatorio-de-testes-de-performance
           path: evidencias_test/index.html
+
+      - name: Step 5 - Commit evidência no repositório
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+          git add evidencias_test/index.html
+          git commit -m "chore: adiciona evidência de teste k6"
+          git push
