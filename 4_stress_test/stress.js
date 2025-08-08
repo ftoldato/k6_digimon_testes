@@ -6,11 +6,10 @@ import { htmlReport } from 'https://raw.githubusercontent.com/benc-uk/k6-reporte
 
 export let options = {
     stages: [
-        { duration: '1m', target: 100 },
-        { duration: '1m', target: 200 },
-        { duration: '1m', target: 300 },
-        { duration: '1m', target: 400 },
-        { duration: '1m', target: 0 },
+        { duration: '10s', target: 100 },
+        { duration: '20s', target: 200 },
+        { duration: '30s', target: 300 },
+        { duration: '40s', target: 400 },
     ],
 };
 

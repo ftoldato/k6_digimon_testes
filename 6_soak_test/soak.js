@@ -5,7 +5,7 @@ import { htmlReport } from 'https://raw.githubusercontent.com/benc-uk/k6-reporte
 
 export let options = {
     vus: 50,
-    duration: '1h',
+    duration: '1m',
 };
 
 export default function () {

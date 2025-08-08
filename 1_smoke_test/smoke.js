@@ -7,5 +7,5 @@ export let options = {
 
 export default function () {
     let res = http.get('https://digimon-api.vercel.app/api/digimon');
-    console.log('Status:', res.status);
+    console.log('Status:', res.status, 'Body:', res.body);
 }
